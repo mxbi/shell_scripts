@@ -1,4 +1,7 @@
-echo "Installing Anaconda3. https://github.com/mxbi/shell_scripts/"
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+echo -e "${BLUE}Installing Anaconda3. https://github.com/mxbi/shell_scripts/ ${NC}"
 
 REPO="https://repo.continuum.io/archive/"
 
@@ -6,23 +9,23 @@ REPO="https://repo.continuum.io/archive/"
 FILENAME="$(wget -qO- ${REPO} | grep -Eoi '<a [^>]+>' | grep -Eo 'href="[^\"]+"' | grep -Eo '[^/"]+' | grep Linux-x86_64.sh | grep Anaconda3 | head -n 1)" &&
 DL_URL=$REPO$FILENAME &&
 
-echo "Downloading $DL_URL"
-wget $DL_URL &&
+echo -e "${BLUE}Downloading $DL_URL${NC}"
+wget $DL_URL -O $FILENAME &&
 chmod u+x $FILENAME &&
 
-echo "Installing $FILENAME"
-./$FILENAME -b &&
+echo -e "${BLUE}Installing $FILENAME${NC}"
+./$FILENAME -b -u &&
 
-echo "Deleting anaconda file"
+echo -e "${BLUE}Deleting anaconda file${NC}"
 rm $FILENAME &&
 
-echo "Adding to .bashrc"
+echo -e "${BLUE}Adding to .bashrc${NC}"
 echo '' >> $HOME/.bashrc &&
 echo '# Anaconda3 installation' >> $HOME/.bashrc &&
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> $HOME/.bashrc &&
 
-echo "Sourcing .bashrc"
+echo -e "${BLUE}Sourcing .bashrc${NC}"
 source $HOME/.bashrc &&
 
-echo "DONE! :)"
+echo -e "${BLUE}DONE! :)${NC}"
 python --version
