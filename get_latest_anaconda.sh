@@ -9,23 +9,23 @@ REPO="https://repo.continuum.io/archive/"
 FILENAME="$(wget -qO- ${REPO} | grep -Eoi '<a [^>]+>' | grep -Eo 'href="[^\"]+"' | grep -Eo '[^/"]+' | grep Linux-x86_64.sh | grep Anaconda3 | head -n 1)" &&
 DL_URL=$REPO$FILENAME &&
 
-echo -e "${BLUE}Downloading $DL_URL${NC}"
+echo -e "${BLUE}Downloading $DL_URL${NC}" &&
 wget $DL_URL -O $FILENAME &&
 chmod u+x $FILENAME &&
 
-echo -e "${BLUE}Installing $FILENAME${NC}"
+echo -e "${BLUE}Installing $FILENAME${NC}" &&
 ./$FILENAME -b -u &&
 
-echo -e "${BLUE}Deleting anaconda file${NC}"
+echo -e "${BLUE}Deleting anaconda file${NC}" &&
 rm $FILENAME &&
 
-echo -e "${BLUE}Adding to .bashrc${NC}"
+echo -e "${BLUE}Adding to .bashrc${NC}" &&
 echo '' >> $HOME/.bashrc &&
 echo '# Anaconda3 installation' >> $HOME/.bashrc &&
 echo 'export PATH="$HOME/anaconda3/bin:$PATH"' >> $HOME/.bashrc &&
 
-echo -e "${BLUE}Sourcing .bashrc${NC}"
+echo -e "${BLUE}Sourcing .bashrc${NC}" &&
 source $HOME/.bashrc &&
 
-echo -e "${BLUE}DONE! :)${NC}"
+echo -e "${BLUE}DONE! :)${NC}" &&
 python --version
