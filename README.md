@@ -1,5 +1,9 @@
 # shell_scripts
-Various bash scripts I've written and I use for setting machines up. These have all been tested on Ubuntu, and are provided without warranty.
+Various bash scripts I've written and I use for setting machines up. These have all been tested on Ubuntu.
+
+The windows/ folder includes various powershell scripts and registry edits I use.
+
+Everything in this repo is provided without warranty of any kind - I recommend reading the scripts before running them as they may not be tailored for your use case.
 
 ## get_latest_anaconda.sh
 Fetches the latest build of Anaconda3, installs it (without user prompts), adds it to bashrc, reloads the shell, and cleans up after itself.  
